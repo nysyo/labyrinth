@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateMaze : MonoBehaviour
 {
-    public GameObject cube, plane;
+    public GameObject cube, plane, sphere;
     [SerializeField] int d = 31, w = 31;
     bool[,] table;
     bool[] end = new bool[4];
@@ -77,6 +77,7 @@ public class CreateMaze : MonoBehaviour
         }
         plane = Instantiate(plane, new Vector3(d / 2, 0, w / 2), Quaternion.identity);
         plane.transform.localScale = new Vector3(d / 10, 1, w / 10);
+        Instantiate(sphere, new Vector3(1, 1, 1), Quaternion.identity);
         for(int i = 0; i < d + 1; i++) {
             for(int j = 0; j < w + 1; j++) {
                 if (table[i, j]) Instantiate(cube, new Vector3(i - 1, 0.5f, j - 1), Quaternion.identity).transform.parent = plane.transform;
